@@ -18,3 +18,22 @@ Finally, bring up the docker containers via laravel sail:
 ```bash
 ./vendor/bin/sail up -d
 ```
+
+## Running Tests
+
+Now that everything is set up, run the test with:
+```bash
+./vendor/bin/phpunit
+```
+
+If you want to generate coverage, first install and enable either [Xdebug](https://xdebug.org/docs/install) or [pcov](https://github.com/krakjoe/pcov/blob/release/INSTALL.md)
+
+Then run:
+```bash
+./vendor/bin/phpunit --coverage-text
+```
+or
+```bash
+./vendor/bin/phpunit --coverage-html ./coverage/
+```
+and look in the coverage folder for what's covered
