@@ -1,9 +1,9 @@
 {
-	"name": "laravel/laravel",
+	"name": "jgawrych/backend-template",
 	"type": "project",
-	"description": "The Laravel Framework.",
-	"keywords": ["framework", "laravel"],
-	"license": "MIT",
+	"description": "A great starting place.",
+	"keywords": [],
+	"license": "Ms-PL",
 	"require": {
 		"php": "^7.3|^8.0",
 		"doctrine/dbal": "^3.1",
