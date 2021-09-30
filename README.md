@@ -26,14 +26,4 @@ Now that everything is set up, run the test with:
 ./vendor/bin/phpunit
 ```
 
-If you want to generate coverage, first install and enable either [Xdebug](https://xdebug.org/docs/install) or [pcov](https://github.com/krakjoe/pcov/blob/release/INSTALL.md)
-
-Then run:
-```bash
-./vendor/bin/phpunit --coverage-text
-```
-or
-```bash
-./vendor/bin/phpunit --coverage-html ./coverage/
-```
-and look in the coverage folder for what's covered
+Look in the coverage folder for what's covered and what's not
