@@ -27,3 +27,10 @@ Now that everything is set up, run the test with:
 ```
 
 Look in the coverage folder for what's covered and what's not
+
+## Running Static Analysis
+
+After you make your changes there are some static analysis rules to ensure type safety:
+```bash
+./vendor/bin/phpstan
+```
