@@ -34,3 +34,10 @@ After you make your changes there are some static analysis rules to ensure type 
 ```bash
 ./vendor/bin/phpstan
 ```
+
+## Running Lint
+
+After you make your changes there are some lint rules to keep everything nice and neat.
+```bash
+./vendor/bin/phpcs
+```
