@@ -19,6 +19,9 @@ Finally, bring up the docker containers via laravel sail:
 ./vendor/bin/sail up -d
 ```
 
+That's it for the backend. Head over to <resources/frontend/README.md> to build
+the angular frontend.
+
 ## Running Tests
 
 Now that everything is set up, run the test with:
