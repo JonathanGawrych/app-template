@@ -27,7 +27,7 @@
 			<!-- While nice, processUncoveredFiles will require_once all files
 				 that weren't touched during the tests. This causes problems for
 				 any php entry point script that actually runs code -->
-			<file>./public/index.php</file>
+			<file>./public/api/index.php</file>
 			<file>./server.php</file>
 		</exclude>
 		<report>
