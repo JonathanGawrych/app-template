@@ -94,6 +94,9 @@
 						"tsConfig": "tsconfig.spec.json",
 						"karmaConfig": "karma.conf.js",
 						"inlineStyleLanguage": "scss",
+						"codeCoverage": true,
+						"sourceMap": true,
+						"watch": false,
 						"assets": [
 							"src/assets"
 						],
