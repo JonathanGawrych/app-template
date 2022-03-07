@@ -1,8 +1,9 @@
-FROM ubuntu:21.04
+FROM ubuntu:21.10
 
 LABEL maintainer="Taylor Otwell"
 
 ARG WWWGROUP
+ARG NODE_VERSION=16
 
 WORKDIR /var/www/html
 
@@ -18,19 +19,19 @@ RUN apt-get update \
 	&& echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf \
 	&& apt-key adv --homedir ~/.gnupg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E5267A6C \
 	&& apt-key adv --homedir ~/.gnupg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C300EE8C \
-	&& echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu hirsute main" > /etc/apt/sources.list.d/ppa_ondrej_php.list \
+	&& echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu impish main" > /etc/apt/sources.list.d/ppa_ondrej_php.list \
 	&& apt-get update \
-	&& apt-get install -y php8.0-cli php8.0-dev \
-		php8.0-pgsql php8.0-sqlite3 php8.0-gd \
-		php8.0-curl php8.0-memcached \
-		php8.0-imap php8.0-mysql php8.0-mbstring \
-		php8.0-xml php8.0-zip php8.0-bcmath php8.0-soap \
-		php8.0-intl php8.0-readline php8.0-pcov \
-		php8.0-msgpack php8.0-igbinary php8.0-ldap \
-		php8.0-redis php8.0-swoole \
-		php8.0-fpm \
-	&& php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
-	&& curl -sL https://deb.nodesource.com/setup_16.x | bash - \
+	&& apt-get install -y php8.1-cli php8.1-dev \
+		php8.1-pgsql php8.1-sqlite3 php8.1-gd \
+		php8.1-curl php8.1-memcached \
+		php8.1-imap php8.1-mysql php8.1-mbstring \
+		php8.1-xml php8.1-zip php8.1-bcmath php8.1-soap \
+		php8.1-intl php8.1-readline php8.1-pcov \
+		php8.1-msgpack php8.1-igbinary php8.1-ldap \
+		php8.1-redis php8.1-swoole \
+		php8.1-fpm \
+	&& php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
+	&& curl -sL https://deb.nodesource.com/setup_$NODE_VERSION.x | bash - \
 	&& apt-get install -y nodejs \
 	&& curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 	&& echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list \
@@ -51,7 +52,7 @@ RUN pecl install --nobuild xdebug
 RUN sed -i '/.*xdebug_log_ex(XLOG_CHAN_DEBUG, XLOG_ERR, "NOCON".*/d' $(pecl config-get temp_dir)/xdebug/src/debugger/com.c
 RUN cd $(pecl config-get temp_dir)/xdebug && phpize && ./configure && make && make install
 
-RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.0
+RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.1
 
 RUN groupadd --force -g $WWWGROUP sail
 RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 sail
@@ -60,7 +61,7 @@ RUN rm /etc/nginx/sites-enabled/default
 COPY nginx.conf /etc/nginx/conf.d/
 COPY start-container /usr/local/bin/start-container
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY php.ini /etc/php/8.0/cli/conf.d/99-sail.ini
+COPY php.ini /etc/php/8.1/cli/conf.d/99-sail.ini
 RUN chmod +x /usr/local/bin/start-container
 
 EXPOSE 8000

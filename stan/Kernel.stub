@@ -4,12 +4,12 @@ namespace Illuminate\Foundation\Http;
 
 class Kernel
 {
-	/** @var array<class-string|string> */
+	/** @var array<int,class-string|string> **/
 	protected $middleware;
 
-	/** @var array<string,array<class-string|string>> */
+	/** @var array<string,array<int,class-string|string>> **/
 	protected $middlewareGroups;
 
-	/** @var array<string,class-string> */
+	/** @var array<string,class-string|string> **/
 	protected $routeMiddleware;
 }

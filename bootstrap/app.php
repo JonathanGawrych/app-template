@@ -11,14 +11,15 @@
 |
 */
 
+use App\Http\Kernel as HttpKernel;
 use Illuminate\Contracts\Debug\ExceptionHandler as ExceptionHandlerContract;
 use Illuminate\Contracts\Console\Kernel as ConsoleKernalContract;
+use Illuminate\Contracts\Http\Kernel as HttpKernalContract;
+use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Foundation\Exceptions\Handler;
 
-$app = new Illuminate\Foundation\Application(
-	$_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
-);
+$app = new Application($_ENV['APP_BASE_PATH'] ?? dirname(__DIR__));
 
 /*
 |--------------------------------------------------------------------------
@@ -31,11 +32,7 @@ $app = new Illuminate\Foundation\Application(
 |
 */
 
-$app->singleton(
-	Illuminate\Contracts\Http\Kernel::class,
-	App\Http\Kernel::class
-);
-
+$app->singleton(HttpKernalContract::class, HttpKernel::class);
 $app->singleton(ConsoleKernalContract::class, ConsoleKernel::class);
 $app->singleton(ExceptionHandlerContract::class, Handler::class);
 
