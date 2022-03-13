@@ -12,13 +12,13 @@
 		"laravel/tinker": "^2"
 	},
 	"require-dev": {
-		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
 		"fakerphp/faker": "^1",
 		"laravel/sail": "^1",
 		"mockery/mockery": "^1",
 		"nunomaduro/collision": "^6",
 		"nunomaduro/larastan": "^1",
-		"phpcompatibility/php-compatibility": "^9.3",
+		"phpcompatibility/php-compatibility": "dev-develop",
 		"phpstan/extension-installer": "^1",
 		"phpstan/phpstan": "^1",
 		"phpstan/phpstan-deprecation-rules": "^1",
@@ -28,7 +28,7 @@
 		"phpstan/phpstan-strict-rules": "^1",
 		"phpunit/phpunit": "^9",
 		"spatie/laravel-ignition": "^1",
-		"squizlabs/php_codesniffer": "^3.6"
+		"squizlabs/php_codesniffer": "^3"
 	},
 	"autoload": {
 		"psr-4": {
@@ -65,7 +65,10 @@
 	"config": {
 		"optimize-autoloader": true,
 		"preferred-install": "dist",
-		"sort-packages": true
+		"sort-packages": true,
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true
